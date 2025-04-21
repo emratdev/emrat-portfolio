@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to handle form submission
+        function handleFormSubmit(event) {
+            // Prevent the form from submitting normally (which would reload the page)
+            event.preventDefault(); 
+            
+            // Get the form fields (if needed for further handling)
+            const name = document.querySelector('[name="name"]').value;
+            const email = document.querySelector('[name="email"]').value;
+            const message = document.querySelector('[name="message"]').value;
+
+            // Display a success message
+            const successMessage = document.createElement('div');
+            successMessage.classList.add('success-message');
+            successMessage.innerText = 'Your message has been submitted successfully!';
+            
+            // Append the success message to the contact form
+            const formContainer = document.querySelector('.contact-form');
+            formContainer.appendChild(successMessage);
+            
+            // Clear form fields after submission (optional)
+            document.querySelector('[name="name"]').value = '';
+            document.querySelector('[name="email"]').value = '';
+            document.querySelector('[name="message"]').value = '';
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/index.html" class="logo">Portfolio</a>
+        <ul>
+            <li class="active"><a href="/index.html">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/contacts.html">Contacts</a></li>
+        </ul>
+    </nav>
+
+    <div class="bars-animation">
+        <div class="bar" style="--i:6;"></div>
+        <div class="bar" style="--i:5;"></div>
+        <div class="bar" style="--i:4;"></div>
+        <div class="bar" style="--i:3;"></div>
+        <div class="bar" style="--i:2;"></div>
+        <div class="bar" style="--i:1;"></div>
+    </div>
+
+    <section class="contacts">
+        <div class="section-title">
+            <h2>Contact Me</h2>
+            <p>Got a question, project idea, or just want to say hi? Let’s talk.</p>
+        </div>
+
+        <div class="contact-form">
+            <form action="#" method="post" onsubmit="handleFormSubmit(event)">
+                <input type="text" name="name" placeholder="Your Name" required />
+                <input type="email" name="email" placeholder="Your Email" required />
+                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <p>Email: <a href="mirdjalaloff@mail.ru">mirdjalaloff@mail.ru</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/elyor-mirdjalalov-8b299a1b7?utm_source=share&utm_campaign=
+                share_via&utm_content=profile&utm_medium=android_app" target="_blank">linkedin.com/in/elyor-mirdjalalov</a></p>
+        </div>
+    </section>
+
+</body>
+</html>
+    
+</body>
+</html>

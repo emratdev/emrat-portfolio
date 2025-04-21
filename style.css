@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;;700;800;900;&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
     margin: 0;
@@ -8,7 +8,7 @@
 }
 
 
-
+/* Index css */
 
 a {
     color: #fff;
@@ -26,6 +26,17 @@ a {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    visibility: hidden;
+    opacity: 0;
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.2s;
+}
+
+@keyframes show-content {
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
 
@@ -57,11 +68,23 @@ a {
 
 
 .home {
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
+    gap: 50px;
     height: 100vh;
-    padding-top: 60px 9% 0;
+    padding: 60px 9% 0;
     color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.6s;
+}
+
+.home-info {
+    position: relative;
+    z-index: 2;
 }
 
 .home-info h1 {
@@ -69,9 +92,54 @@ a {
 }
 
 .home-info h2 {
+    display: inline-block;
     font-size: 32px;
     margin-top: -10px;
 }
+
+.home-info h2 span {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #7cd03d;
+    animation: display-text 16s linear infinite;
+    font-weight: 600;
+    animation-delay: calc(-4s * var(--i))
+}
+
+.home-info h2 span::before {
+    content: attr(data-text);
+    position: absolute;
+    width: 0;
+    border-right: 2px solid #7cd03d;
+    color: #7cd03d;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: fill-text 4s linear infinite;
+}
+
+@keyframes fill-text {
+    10%, 100% {
+        width: 0;
+    }
+
+    70%,
+    90% {
+        width: 100%;
+    }
+}
+    
+
+
+@keyframes display-text {
+
+    25%,
+    100% {
+        display: none;
+    }
+    
+}
+
 
 
 .home-info p {
@@ -148,6 +216,18 @@ a {
     width: 500px;
     height: 500px;
     background: conic-gradient(transparent, transparent, transparent, #7cd03d);
+    transform: rotate(0deg);
+    animation: rotate-border 10s linear infinite;
+}
+
+@keyframes rotate-border {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.home-img .img-box::after {
+    animation-delay: -5s;
 }
 
 .home-img .img-box .img-item {
@@ -175,6 +255,7 @@ a {
 
 
 .bars-animation {
+    z-index: 0;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -186,9 +267,9 @@ a {
     width: 100%;
     height: 100%;
     background: #1f242d;
-    border: 2px solid red;
     transform: translate(-100%);
     animation: show-bars .5s ease-in-out forwards;
+    animation-delay: calc(.1s * var(--i));
 
 }
 
@@ -197,4 +278,328 @@ a {
     100% {
         transform: translate(0%);
     }
+}
+
+
+/* about css */
+
+.about {
+    position: relative;
+    z-index: 2;
+    padding: 100px 9%;
+    color: #fff;
+    /* visibility: visible;
+    opacity: 1; */
+    visibility: hidden;
+    opacity: 0;
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.2s;
+  }
+  
+  .about-info,
+  .tech-stack,
+  .fun-facts {
+    margin-bottom: 40px;
+  }
+  
+  .about h2, .about h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #7cf03d;
+  }
+  
+  .about p,
+  .about li {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .stack-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 30px;
+    color: #7cf03d;
+  }
+  
+
+  /* projects css */
+  .projects-section {
+    padding: 100px 9% 50px;
+    color: #fff ; 
+    visibility: hidden;
+    opacity: 0;
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.2s;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #7cf03d;
+    text-align: center;
+}
+
+.projects-container {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.project-card {
+    background-color: #272c36;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #7cf03d44;
+    transition: transform 0.3s ease;
+    z-index: 1; 
+    overflow: visible; 
+}
+
+.project-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #7cf03d;  
+}
+
+.project-card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #ddd;  
+}
+
+.project-card a {
+    color: #7cf03d;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+
+/* Services css */
+
+.services {
+    z-index: 2;
+    position: relative;
+    padding: 80px 9%;
+    color: #fff;
+    background-color: #272c36; /* Dark background for contrast */
+    visibility: hidden;
+    opacity: 0;
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.2s;
+}
+
+.services .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.services .section-title h2 {
+    font-size: 32px !important;
+    color: #7cf03d !important;
+    margin-bottom: 10px;
+}
+
+.services .section-title p {
+    font-size: 18px !important;
+    color: #ddd !important;
+    line-height: 1.6;
+}
+
+.services-container {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid layout */
+    margin-top: 40px;
+}
+
+
+.service-card {
+    background-color: #1f242d; 
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #7cf03d44; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+    
+}
+
+.service-card  {
+    margin-bottom: 20px;
+}
+
+
+.service-card .service-icon img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    width: 40vw;
+    display: block;
+    margin: 0 auto;
+}
+.service-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 22px;
+    color: #7cf03d;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    font-size: 16px;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+
+.cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.cta p {
+    font-size: 18px;
+    color: #ddd;
+}
+
+.cta a {
+    font-size: 18px;
+    color: #7cf03d;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.cta a:hover {
+    color: #fff; 
+}
+
+
+/* Contacts css */
+
+
+.contacts {
+
+    padding: 100px 9%;
+    color: #fff;
+    background-color: #1f242d;
+    visibility: hidden;
+    opacity: 0;
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.2s;
+}
+
+.contacts .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contacts .section-title h2 {
+    font-size: 32px;
+    color: #7cf03d;
+    margin-bottom: 10px;
+}
+
+.contacts .section-title p {
+    font-size: 18px;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* Contact Form */
+.contact-form {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #272c36;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #7cf03d44;
+    
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px 15px;
+    border: 1px solid #7cf03d44;
+    border-radius: 8px;
+    background-color: #1f242d;
+    color: #fff;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #7cf03d;
+    box-shadow: 0 0 8px #7cf03d44;
+}
+
+.contact-form button {
+    padding: 12px 20px;
+    background-color: #7cf03d;
+    color: #1f242d;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: transparent;
+    color: #7cf03d;
+    border: 2px solid #7cf03d;
+}
+
+.contact-info {
+    margin-top: 60px;
+    text-align: center;
+    color: #ddd;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.contact-info a {
+    color: #7cf03d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Submit success message */
+.success-message {
+    background-color: #7cf03d;
+    color: #1f242d;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
 }
